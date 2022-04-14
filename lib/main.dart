@@ -1,9 +1,21 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:todo/Screens/testScreen.dart';
+// import 'package:todo/Screens/testScreen.dart';
 
 import 'Screens/Home_Screen.dart';
+import 'cubit/bloc-observer.dart';
 
-void main() {
-  runApp(const MyApp());
+// void main() {
+//   blocObserver: SimpleBlocObserver();
+//
+// }
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  BlocOverrides.runZoned(() {
+    runApp(const MyApp());
+  }, blocObserver: SimpleBlocObserver());
 }
 
 class MyApp extends StatelessWidget {
@@ -26,7 +38,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const BottomScreen(),
+      home: BottomScreen(),
     );
   }
 }
